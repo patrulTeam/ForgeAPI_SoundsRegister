@@ -7,12 +7,12 @@ namespace ForgeAPI_SoundsRegister
 {
     class Program
     {
-        public static ushort GetMaxLengthInStringArray(string[] _Strs)
+        public static int GetMaxLengthInStringArray(string[] _Strs)
         {
-            ushort _MaxLength = 0;
+            int _MaxLength = 0;
             foreach (string _Str in _Strs)
             {
-                if (_Strs.Length > _MaxLength) _MaxLength = (ushort)_Strs.Length;
+                if (_Str.Length > _MaxLength) _MaxLength = _Str.Length;
             }
             return _MaxLength;
         }
@@ -94,13 +94,13 @@ namespace ForgeAPI_SoundsRegister
         {
             return ("  \""+_FileName+"\": {\n    \"category\": \"record\",\n    \"sounds\": [\n      {\n        \"name\": \""+_Modid+":music/"+_FileName+"\",\n        \"stream\": true\n      }\n    ]\n  },\n");
         }
-        public static string SoundLocationTemplateSubstitution(string _FileName, string _Modid, ushort _MaxLength)
+        public static string SoundLocationTemplateSubstitution(string _FileName, string _Modid, int _MaxLength)
         {
-            return "\tpublic static ResourceLocation " + SoundNameWitoutPostfixFrom(_FileName) + "_location" + (new string(' ', (_MaxLength - _FileName.Length)))+" = new ResourceLocation(\"" + _Modid + "\", \"" + _FileName + "\");\n";
+            return "\tpublic static ResourceLocation " + SoundNameWitoutPostfixFrom(_FileName) + "_location" + (new string(' ', (_MaxLength + 1 - _FileName.Length)))+" = new ResourceLocation(\"" + _Modid + "\", \"" + _FileName + "\");\n";
         }
-        public static string SoundEventTemplateSubstitution(string _FileName, ushort _MaxLength)
+        public static string SoundEventTemplateSubstitution(string _FileName, int _MaxLength)
         {
-            return ("\tpublic static SoundEvent " + SoundNameWitoutPostfixFrom(_FileName) + (new string(' ', (_MaxLength - _FileName.Length)))+ " = new SoundEvent(SoundLocations." + SoundNameWitoutPostfixFrom(_FileName) + "_location);\n");
+            return ("\tpublic static SoundEvent " + SoundNameWitoutPostfixFrom(_FileName) + (new string(' ', (_MaxLength + 1 - _FileName.Length)))+ " = new SoundEvent(SoundLocations." + SoundNameWitoutPostfixFrom(_FileName) + "_location);\n");
         }
         private static void CreateSoundsDotJsonFile(string _Dir, string[] _SoundFilesNames, string _Modid)
         {
@@ -120,7 +120,7 @@ namespace ForgeAPI_SoundsRegister
         {
             StreamWriter _SoundLocationFile = new StreamWriter(_Dir + "\\SoundLocation.java");
             _SoundLocationFile.Write("package "+_package+".client.sounds;\n\nimport net.minecraft.util.ResourceLocation;\nimport net.minecraft.util.SoundEvent;\n\npublic class SoundLocations {\n	\n");
-            ushort _MaxLength = GetMaxLengthInStringArray(_SoundFilesNames);
+            int _MaxLength = GetMaxLengthInStringArray(_SoundFilesNames);
             foreach (string _SoundFile in _SoundFilesNames)
             {
                 _SoundLocationFile.Write((SoundLocationTemplateSubstitution(_SoundFile, _Modid, _MaxLength)));
@@ -132,7 +132,7 @@ namespace ForgeAPI_SoundsRegister
         {
             StreamWriter _SoundEventFile = new StreamWriter(_Dir + "\\SoundEvents.java");
             _SoundEventFile.Write("package " + _package + ".client.sounds;\n\nimport net.minecraft.util.ResourceLocation;\nimport net.minecraft.util.SoundEvent;\n\npublic class SoundEvents {\n\n");
-            ushort _MaxLength = GetMaxLengthInStringArray(_SoundFilesNames);
+            int _MaxLength = GetMaxLengthInStringArray(_SoundFilesNames);
             foreach (string _File in _SoundFilesNames)
             {
                 _SoundEventFile.Write(SoundEventTemplateSubstitution(_File, _MaxLength));
