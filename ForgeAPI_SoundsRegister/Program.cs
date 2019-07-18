@@ -118,8 +118,8 @@ namespace ForgeAPI_SoundsRegister
         }
         private static void CreateSoundLocationFile(string _Dir, string[] _SoundFilesNames, string _Modid, string _package)
         {
-            StreamWriter _SoundLocationFile = new StreamWriter(_Dir + "\\SoundLocations.java");
-            _SoundLocationFile.Write("package "+_package+".client.sounds;\n\nimport net.minecraft.util.ResourceLocation;\nimport net.minecraft.util.SoundEvent;\n\npublic class SoundLocations {\n	\n");
+            StreamWriter _SoundLocationFile = new StreamWriter(_Dir + "\\SoundsLocations.java");
+            _SoundLocationFile.Write("package "+_package+".client.sounds;\n\nimport net.minecraft.util.ResourceLocation;\nimport net.minecraft.util.SoundEvent;\n\npublic class SoundsLocations {\n	\n");
             int _MaxLength = GetMaxLengthInStringArray(_SoundFilesNames);
             foreach (string _SoundFile in _SoundFilesNames)
             {
@@ -130,8 +130,8 @@ namespace ForgeAPI_SoundsRegister
         }
         private static void CreateSoundEventFile(string _Dir, string[] _SoundFilesNames, string _Modid, string _package)
         {
-            StreamWriter _SoundEventFile = new StreamWriter(_Dir + "\\SoundEvents.java");
-            _SoundEventFile.Write("package " + _package + ".client.sounds;\n\nimport net.minecraft.util.ResourceLocation;\nimport net.minecraft.util.SoundEvent;\n\npublic class SoundEvents {\n\n");
+            StreamWriter _SoundEventFile = new StreamWriter(_Dir + "\\SoundsEvents.java");
+            _SoundEventFile.Write("package " + _package + ".client.sounds;\n\nimport net.minecraft.util.ResourceLocation;\nimport net.minecraft.util.SoundEvent;\n\npublic class SoundsEvents {\n\n");
             int _MaxLength = GetMaxLengthInStringArray(_SoundFilesNames);
             foreach (string _File in _SoundFilesNames)
             {
