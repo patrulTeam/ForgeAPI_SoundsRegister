@@ -118,7 +118,7 @@ namespace ForgeAPI_SoundsRegister
         }
         private static void CreateSoundLocationFile(string _Dir, string[] _SoundFilesNames, string _Modid, string _package)
         {
-            StreamWriter _SoundLocationFile = new StreamWriter(_Dir + "\\SoundLocation.java");
+            StreamWriter _SoundLocationFile = new StreamWriter(_Dir + "\\SoundLocations.java");
             _SoundLocationFile.Write("package "+_package+".client.sounds;\n\nimport net.minecraft.util.ResourceLocation;\nimport net.minecraft.util.SoundEvent;\n\npublic class SoundLocations {\n	\n");
             int _MaxLength = GetMaxLengthInStringArray(_SoundFilesNames);
             foreach (string _SoundFile in _SoundFilesNames)
