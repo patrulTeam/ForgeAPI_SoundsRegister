@@ -1,0 +1,6 @@
+C:\Users\Mikhaill\source\repos\ForgeAPI_SoundsRegister\ForgeAPI_SoundsRegister\bin\Debug\ForgeAPI_SoundsRegister.exe
+C:\Users\Mikhaill\source\repos\ForgeAPI_SoundsRegister\ForgeAPI_SoundsRegister\bin\Debug\ForgeAPI_SoundsRegister.pdb
+C:\Users\Mikhaill\source\repos\ForgeAPI_SoundsRegister\ForgeAPI_SoundsRegister\obj\Debug\ForgeAPI_SoundsRegister.csprojAssemblyReference.cache
+C:\Users\Mikhaill\source\repos\ForgeAPI_SoundsRegister\ForgeAPI_SoundsRegister\obj\Debug\ForgeAPI_SoundsRegister.csproj.CoreCompileInputs.cache
+C:\Users\Mikhaill\source\repos\ForgeAPI_SoundsRegister\ForgeAPI_SoundsRegister\obj\Debug\ForgeAPI_SoundsRegister.exe
+C:\Users\Mikhaill\source\repos\ForgeAPI_SoundsRegister\ForgeAPI_SoundsRegister\obj\Debug\ForgeAPI_SoundsRegister.pdb
