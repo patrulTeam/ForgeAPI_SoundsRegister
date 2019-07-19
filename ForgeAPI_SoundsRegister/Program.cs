@@ -106,14 +106,20 @@ namespace ForgeAPI_SoundsRegister
         {
             StreamWriter _SoundsDotJsonFile = new StreamWriter((_Dir + "\\sounds.json"));
             _SoundsDotJsonFile.Write("{\n");
-            foreach(string _SoundFileName in _SoundFilesNames)
+            int Iterrator = 0;
+            while (Iterrator < (_SoundFilesNames.Length - 1))
             {
-                if (((SoundFilePostfixFrom(_SoundFileName)).Equals("sound")))
+                if (((SoundFilePostfixFrom(_SoundFilesNames[Iterrator])).Equals("sound")))
                 {
-                    _SoundsDotJsonFile.Write((SoundSoundsDotJsonTemplateSubstitution(_SoundFileName, _Modid)+","));
+                    _SoundsDotJsonFile.Write((SoundSoundsDotJsonTemplateSubstitution(_SoundFilesNames[Iterrator], _Modid)+","));
                 }
-                else _SoundsDotJsonFile.Write((MusicSoundsDotJsonTemplateSubstitution(_SoundFileName, _Modid)+","));
+                else _SoundsDotJsonFile.Write((MusicSoundsDotJsonTemplateSubstitution(_SoundFilesNames[Iterrator++], _Modid)+","));
             }
+            if (((SoundFilePostfixFrom(_SoundFilesNames[Iterrator])).Equals("sound")))
+            {
+                _SoundsDotJsonFile.Write(SoundSoundsDotJsonTemplateSubstitution(_SoundFilesNames[Iterrator], _Modid));
+            }
+            else _SoundsDotJsonFile.Write(MusicSoundsDotJsonTemplateSubstitution(_SoundFilesNames[Iterrator++], _Modid));
             _SoundsDotJsonFile.Write("\n}");
             _SoundsDotJsonFile.Close();
         }
